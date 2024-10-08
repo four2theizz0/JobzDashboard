@@ -9,6 +9,7 @@ import Dashboard from './pages/Dashboard'
 import JobSearch from './pages/JobSearch'
 import JobTracking from './pages/JobTracking'
 import Profile from './pages/Profile'
+import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
   return (
@@ -17,13 +18,13 @@ function App() {
         <Header />
         <main className="flex-grow container mx-auto px-4 py-8">
           <Routes>
-            <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/job-search" element={<JobSearch />} />
-            <Route path="/job-tracking" element={<JobTracking />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+            <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+            <Route path="/job-search" element={<ProtectedRoute><JobSearch /></ProtectedRoute>} />
+            <Route path="/job-tracking" element={<ProtectedRoute><JobTracking /></ProtectedRoute>} />
+            <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
           </Routes>
         </main>
         <Footer />
